@@ -1,0 +1,17 @@
+{
+  "name": "Mortgage Extra Payment Calculator — Early Payoff & Interest Savings",
+  "short_name": "Mortgage Payoff",
+  "description": "Calculate how much interest and how many years you can save on your 30-year or 15-year home mortgage with extra monthly principal payments.",
+  "start_url": "/mortgage-extra-payment/",
+  "display": "standalone",
+  "background_color": "#0369a1",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

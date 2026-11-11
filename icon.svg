@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mortBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="badgeSave" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="110" fill="url(#mortBg)"/>
+  
+  <!-- House Base White -->
+  <polygon points="256,100 100,225 140,225 140,390 372,390 372,225 412,225" fill="#ffffff" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.25))"/>
+  
+  <!-- Door & Windows -->
+  <rect x="226" y="270" width="60" height="120" rx="8" fill="#e2e8f0"/>
+  <rect x="170" y="250" width="40" height="40" rx="6" fill="#38bdf8"/>
+  <rect x="302" y="250" width="40" height="40" rx="6" fill="#38bdf8"/>
+
+  <!-- Extra Payment Badge / Arrow -->
+  <circle cx="370" cy="370" r="75" fill="url(#badgeSave)" stroke="#ffffff" stroke-width="10"/>
+  <text x="370" y="395" font-family="system-ui, -apple-system, sans-serif" font-size="70" font-weight="900" fill="#ffffff" text-anchor="middle">$</text>
+  
+  <!-- Fast Forward Speed Arrows -->
+  <path d="M330 330 L355 315 L330 300 M355 330 L380 315 L355 300" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
