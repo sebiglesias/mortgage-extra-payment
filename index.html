@@ -19,6 +19,17 @@
   <meta name="description" content="Calculate how much money and how many years you can shave off your 30-year or 15-year mortgage by making extra monthly principal payments. Includes full amortization schedule.">
   <meta name="keywords" content="mortgage extra payment calculator, early mortgage payoff calculator, principal extra payment calculator, how to pay off 30 year mortgage in 15 years, mortgage amortization extra payments">
   <link rel="canonical" href="https://sebiglesias.com.ar/mortgage-extra-payment/">
+  <link rel="alternate" hreflang="en" href="https://sebiglesias.com.ar/mortgage-extra-payment/">
+  <link rel="alternate" hreflang="es" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=es">
+  <link rel="alternate" hreflang="de" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=de">
+  <link rel="alternate" hreflang="fr" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=fr">
+  <link rel="alternate" hreflang="it" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=it">
+  <link rel="alternate" hreflang="pt" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=pt">
+  <link rel="alternate" hreflang="nl" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=nl">
+  <link rel="alternate" hreflang="sv" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=sv">
+  <link rel="alternate" hreflang="da" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=da">
+  <link rel="alternate" hreflang="pl" href="https://sebiglesias.com.ar/mortgage-extra-payment/?lang=pl">
+  <link rel="alternate" hreflang="x-default" href="https://sebiglesias.com.ar/mortgage-extra-payment/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -99,6 +110,18 @@
 <body>
 
   <header class="top-bar">
+<div style='display:flex;justify-content:flex-end;margin-bottom:.5rem'><select id="lang-select" aria-label="Language" style="background:#24221C;border:1px solid rgba(242,239,230,.18);color:#F2EFE6;font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:3px 6px;border-radius:3px;cursor:pointer;margin-left:auto">
+  <option value="en">🇺🇸 EN</option>
+  <option value="es">🇪🇸 ES</option>
+  <option value="de">🇩🇪 DE</option>
+  <option value="fr">🇫🇷 FR</option>
+  <option value="it">🇮🇹 IT</option>
+  <option value="pt">🇵🇹 PT</option>
+  <option value="nl">🇳🇱 NL</option>
+  <option value="sv">🇸🇪 SV</option>
+  <option value="da">🇩🇰 DA</option>
+  <option value="pl">🇵🇱 PL</option>
+</select></div>
     <div class="top-bar-inner">
       <a href="https://sebiglesias.com.ar/" class="back-link">
         ← Back to sebiglesias.com.ar
@@ -360,5 +383,41 @@
   </footer>
 
   <script src="app.js"></script>
+
+<script>
+/* I18N_AUTO_ENGINE */
+(function(){
+  const DICT = {"en": {"title": "Mortgage Extra Payment Calculator<span class='accent'>.</span>", "sub": "Calculate interest saved & years shaved off a 15 or 30-year home loan"}, "es": {"title": "Calculadora Amortización Anticipada Hipoteca<span class='accent'>.</span>", "sub": "Cuánto interés y años ahorrás al hacer pagos extra a capital"}, "de": {"title": "Hypotheken-Sondertilgungsrechner<span class='accent'>.</span>", "sub": "Zinsersparnis und Laufzeitverkürzung beim Immobilienkredit berechnen"}, "fr": {"title": "Calculateur Remboursement Anticipé Prêt Immobilier<span class='accent'>.</span>", "sub": "Intérêts économisés et années gagnées grâce aux versements supplémentaires"}, "it": {"title": "Calcolatore Estinzione Parziale Mutuo Casa<span class='accent'>.</span>", "sub": "Calcola interessi risparmiati e anni ridotti con versamenti extra"}, "pt": {"title": "Calculadora Amortização Extra Financiamento Imobiliário<span class='accent'>.</span>", "sub": "Veja quantos anos e juros você economiza amortizando o saldo devedor"}, "nl": {"title": "Hypotheek Extra Aflossen Calculator<span class='accent'>.</span>", "sub": "Bereken rentebesparing en kortere looptijd bij extra aflossing op je woning"}, "sv": {"title": "Bolån Extra Amortering Kalkylator<span class='accent'>.</span>", "sub": "Räkna ut sparad ränta och förkortad återbetalningstid på bolånet"}, "da": {"title": "Boliglån Ekstra Afdrag Beregner<span class='accent'>.</span>", "sub": "Se hvor mange års løbetid og renter du sparer ved ekstra afdrag"}, "pl": {"title": "Kalkulator Nadpłaty Kredytu Hipotecznego<span class='accent'>.</span>", "sub": "Oblicz ile tysięcy odsetek i lat spłaty zaoszczędzisz nadpłacając hipotekę"}};
+  const h1El = document.querySelector('h1');
+  const subEl = document.querySelector('.sub') || document.querySelector('header p');
+  const selEl = document.getElementById('lang-select');
+  function applyLang(lang) {
+    const entry = DICT[lang] || DICT.en;
+    document.documentElement.lang = lang;
+    if (h1El && entry.title) h1El.innerHTML = entry.title;
+    if (subEl && entry.sub) subEl.textContent = entry.sub;
+    if (lang !== 'en' && entry.sub) {
+      document.title = (h1El ? h1El.textContent : '') + ' — ' + entry.sub;
+    }
+  }
+  const params = new URLSearchParams(window.location.search);
+  const init = params.get('lang') || localStorage.getItem('mortgage-extra-payment-lang') || 'en';
+  const valid = DICT[init] ? init : 'en';
+  if (selEl) {
+    selEl.value = valid;
+    selEl.addEventListener('change', function(e) {
+      const nl = e.target.value;
+      localStorage.setItem('mortgage-extra-payment-lang', nl);
+      const u = new URL(window.location.href);
+      if (nl === 'en') u.searchParams.delete('lang');
+      else u.searchParams.set('lang', nl);
+      window.history.replaceState({}, '', u);
+      applyLang(nl);
+    });
+  }
+  applyLang(valid);
+})();
+</script>
+
 </body>
 </html>
